@@ -1,0 +1,10 @@
+global-styling:
+  version: VERSION
+  css:
+    base:
+      css/style.css: {}
+  less:
+    theme:
+      less/style.less: { }
+  js:
+      js/script.js: {}

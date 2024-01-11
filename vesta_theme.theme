@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements template_preprocess_region().
+ */
+function vesta_theme_preprocess_region(&$variables) {
+  // Add missing region CSS classes.
+  $variables['attributes']['class'][] = 'region';
+  if (isset($variables['region']) && !empty($variables['region'])) {
+    $variables['attributes']['class'][] = 'region-' . str_replace('_', '-', $variables['region']);
+  }
+}

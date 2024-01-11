@@ -1,0 +1,15 @@
+{
+  "name": "drupal/vesta_theme",
+  "description": "Тема Vesta",
+  "type": "drupal-theme",
+  "homepage": "https://github.com/danila-k-open/vesta_theme",
+  "license": "MIT License",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Danila",
+      "homepage": "https://github.com/danila-k-open",
+      "role": "Maintainer"
+    }
+  ]
+}
