@@ -10,7 +10,6 @@ global-styling:
   less:
     theme:
       less/base.less: {}
-      less/style.less: {}
   js:
     js/slick.min.js: {}
     js/jquery.mmenu.all.min.js: {}
