@@ -3,8 +3,11 @@ global-styling:
   css:
     base:
       css/style.css: {}
+    theme:
+      css/jquery.mmenu.all.css: {}
   less:
     theme:
-      less/style.less: { }
+      less/style.less: {}
   js:
-      js/script.js: {}
+    js/jquery.mmenu.all.min.js: { }
+    js/script.js: { }
