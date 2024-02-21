@@ -11,6 +11,6 @@ global-styling:
     theme:
       less/base.less: {}
   js:
-    js/slick.min.js: {}
+    #js/slick.min.js: {}
     js/jquery.mmenu.all.min.js: {}
-    #js/script.js: {}
+    js/script.js: {}
