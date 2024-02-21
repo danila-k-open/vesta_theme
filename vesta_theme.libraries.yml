@@ -5,9 +5,12 @@ global-styling:
       css/style.css: {}
     theme:
       css/jquery.mmenu.all.css: {}
+      #css/slick.css: {}
+      #css/slick-theme.css: {}
   less:
     theme:
       less/style.less: {}
   js:
-    js/jquery.mmenu.all.min.js: { }
-    js/script.js: { }
+    js/slick.min.js: {}
+    js/jquery.mmenu.all.min.js: {}
+    #js/script.js: {}

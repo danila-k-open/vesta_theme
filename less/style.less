@@ -28,38 +28,6 @@
 
 @mobile-sm-max: 575px;
 
-
-.desctop-pc-max(@rules) {
-  @media screen and (min-width: @desktop-max){
-    @rules();
-  };
-};
-.desctop-pc(@rules) {
-  @media screen and (min-width: @desktop){
-    @rules();
-  };
-};
-.desctop-tab(@rules) {
-  @media screen and (min-width: @tablet) and (max-width: @tablet-max){
-    @rules();
-  };
-};
-.desctop-lg(@rules) {
-  @media screen and (min-width: @mobile-lg) and (max-width: @mobile-lg-max){
-    @rules();
-  };
-};
-.desctop-md(@rules) {
-  @media screen and (min-width: @mobile-md) and (max-width: @mobile-max){
-    @rules();
-  };
-};
-.desctop-mob(@rules) {
-  @media screen and (max-width: @mobile-max){
-    @rules();
-  };
-};
-
 .transition(@time:.4s){
   -webkit-transition: all @time ease;
   -ms-transition: all @time ease;
