@@ -1,47 +1,110 @@
-<div class="layout-container">
-
-    <header role="banner">
-        {{ page.header }}
-        {{ page.navigation }}
+{%  if page_is_front == true %}
+    {% set page_front_class = "front" %}
+{% else %}
+    {% set page_front_class = "not-front" %}
+{% endif %}
+<div id="page" class="page {{ page_front_class }}">
+    <header id="header" class="header">
+        {% if page.header %}
+            <div class="header-block">
+                <div class="container">
+                    {{ page.header }}
+                </div>
+            </div>
+        {% endif %}
+        {% if page.header_mobile %}
+            <div class="header-mobile-block">
+                <div class="container">
+                    {{ page.header_mobile }}
+                </div>
+            </div>
+        {% endif %}
     </header>
-
-{#    {{ page.primary_menu }}#}
-{#    {{ page.secondary_menu }}#}
-{#    {{ page.breadcrumb }}#}
-{#    {{ page.highlighted }}#}
-{#    {{ page.help }}#}
+    {% if page.navigation %}
+        <div class="navigation">
+            <div class="container">
+                {{ page.navigation }}
+            </div>
+        </div>
+    {% endif %}
     {% if page.slider %}
-        <div class="slider">
+        <div id="slider-block" class="slider-block">
             {{ page.slider }}
         </div>
     {% endif %}
-    <main role="main">
-        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-        <div class="layout-content">
+    <main class="main">
+        <a id="main-content" tabindex="-1"></a>
+        <div class="container">
             {{ page.content }}
         </div>
-
-{#        {% if page.sidebar_first %}#}
-{#            <aside class="layout-sidebar-first" role="complementary">#}
-{#                {{ page.sidebar_first }}#}
-{#            </aside>#}
-{#        {% endif %}#}
-
-{#        {% if page.sidebar_second %}#}
-{#            <aside class="layout-sidebar-second" role="complementary">#}
-{#                {{ page.sidebar_second }}#}
-{#            </aside>#}
-{#        {% endif %}#}
-
     </main>
 
+    {% if page.services %}
+        <div id="services-block" class="services-block">
+            <div class="container">
+                {{ page.services }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.about %}
+        <div id="about-block" class="about-block">
+            <div class="container">
+                {{ page.about }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.news %}
+        <div id="news-block" class="news-block">
+            <div class="container">
+                {{ page.news }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.works %}
+        <div id="works-block" class="works-block">
+            <div class="container">
+                {{ page.works }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.form %}
+        <div id="form-block" class="form-block">
+            <div class="container">
+                {{ page.form }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.map %}
+        <div id="map-block" class="map-block">
+            {{ page.map }}
+        </div>
+    {% endif %}
+
     {% if page.footer %}
-        <footer role="contentinfo">
-            {{ page.footer }}
+        <footer id="footer" class="footer">
+            <div class="container">
+                {{ page.footer }}
+            </div>
         </footer>
     {% endif %}
-    <div class="vesta-backlink">
-        <a href="https://webvesta.ru" target="_blank" title="Создание и продвижение сайтов">Разработка сайта | Веб-студия "Веста"</a>
-    </div>
+
+    {% if page.copyrights %}
+        <div id="copyrights-block" class="copyrights-block">
+            <div class="container">
+                {{ page.copyrights }}
+            </div>
+        </div>
+    {% endif %}
 </div>
+
+{% if page.navigation_mobile %}
+    <nav id="mobile-nav">
+        {{ page.navigation_mobile }}
+    </nav>
+{% endif %}
