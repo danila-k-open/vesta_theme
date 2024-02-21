@@ -9,6 +9,7 @@ global-styling:
       #css/slick-theme.css: {}
   less:
     theme:
+      less/base.less: {}
       less/style.less: {}
   js:
     js/slick.min.js: {}
