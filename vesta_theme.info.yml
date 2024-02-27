@@ -17,6 +17,6 @@ regions:
   about: 'О компании'
   works: 'Наши работы'
   form: 'Связаться с нами'
-  Map: 'Карта'
+  map: 'Карта'
   footer: 'Подвал'
   copyrights: 'Копирайт'
