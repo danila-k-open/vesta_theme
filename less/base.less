@@ -357,8 +357,14 @@ html.mm-opening.mm-position-right .mm-slideout{
   display: flex;
   flex-direction: column;
 }
-
-
+.mm-menu{
+  &:not(.mm-opened){
+    opacity: 0;
+  }
+  &.mm-opened{
+    opacity: 1;
+  }
+}
 .btn{
   font-size: inherit;
   &:active, &.active{
