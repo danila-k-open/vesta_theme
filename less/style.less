@@ -548,7 +548,7 @@ nav#mobile-nav{
     div.mm-panel{
       padding: 0;
       ul{
-        margin: 20px 0 0 0 !important;
+        margin: 40px 0 0 0 !important;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
@@ -566,8 +566,24 @@ nav#mobile-nav{
           }
           &::after{
             left: 0;
+            border-color: rgba(0,0,0,0.1);
           }
         }
+
+        .dropdown-toggle::after {
+          display: none;
+        }
+      }
+      .dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        float: none;
+        min-width: 100%;
+        padding: 0;
+        border: none;
       }
     }
   });
