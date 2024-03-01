@@ -2,9 +2,9 @@ global-styling:
   version: VERSION
   css:
     base:
+      css/jquery.mmenu.all.css: {}
       css/style.css: {}
     theme:
-      css/jquery.mmenu.all.css: {}
       #css/slick.css: {}
       #css/slick-theme.css: {}
   less:
