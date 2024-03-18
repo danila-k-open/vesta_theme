@@ -3,20 +3,28 @@
 /**
  * Implements template_preprocess_region().
  */
-function vesta_theme_preprocess_region(&$variables) {
-  // Add missing region CSS classes.
-  $variables['attributes']['class'][] = 'region';
-  if (isset($variables['region']) && !empty($variables['region'])) {
-    $variables['attributes']['class'][] = 'region-' . str_replace('_', '-', $variables['region']);
-  }
+function vesta_theme_preprocess_region(&$variables)
+{
+    // Add missing region CSS classes.
+    $variables['attributes']['class'][] = 'region';
+    if (isset($variables['region']) && !empty($variables['region'])) {
+        $variables['attributes']['class'][] = 'region-' . str_replace('_', '-', $variables['region']);
+    }
 }
+
 /**
  * Implements vesta_theme_theme_suggestions_page_alter().
  */
-function vesta_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
-	$suggestions[] = 'page__node_type__' . $node->bundle();
-    $variables['node'] = $node;
-  }
-  return $variables;
+function vesta_theme_theme_suggestions_page_alter(array &$suggestions, array $variables)
+{
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        $suggestions[] = 'page__node_type__' . $node->bundle();
+        $variables['node'] = $node;
+    }
+    return $variables;
+}
+
+function vesta_theme_form_search_api_page_block_form_search_alter(&$form, &$form_state)
+{
+    $form['keys']['#attributes']['placeholder'][] = t('Поиск');
 }
