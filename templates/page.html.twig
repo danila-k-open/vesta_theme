@@ -1,4 +1,4 @@
-{%  if page_is_front == true %}
+{% if page_is_front == true %}
     {% set page_front_class = "front" %}
 {% else %}
     {% set page_front_class = "not-front" %}
@@ -91,15 +91,23 @@
             <div class="container">
                 {{ page.footer }}
             </div>
-        </footer>
-    {% endif %}
-
-    {% if page.copyrights %}
-        <div id="copyrights-block" class="copyrights-block">
+            {% if page.copyrights %}
+                <div id="copyrights-block" class="copyrights-block">
+                    <div class="container">
+                        {{ page.copyrights }}
+                    </div>
+                </div>
+            {% endif %}
             <div class="container">
-                {{ page.copyrights }}
+                <div class="vesta_backlink">
+                    <p class="vesta">
+                        <a href="https://webvesta.ru" target="_blank" title="Создание и продвижение сайтов">
+                            Создание сайтов | Веб-студия Веста
+                        </a>
+                    </p>
+                </div>
             </div>
-        </div>
+        </footer>
     {% endif %}
 </div>
 
