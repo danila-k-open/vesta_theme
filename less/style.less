@@ -4,7 +4,7 @@ div#page{
     margin: 0;
     .header-block{
       padding: 10px 0;
-      .desctop-mob({
+      .mobile({
         display: none;
       });
       .region.region-header{
@@ -92,7 +92,7 @@ div#page{
     }
     .header-mobile-block{
       display: none;
-      .desctop-mob({
+      .mobile({
         padding: 10px 0;
         display: block;
         background-color: #b3b3b3;
@@ -113,7 +113,7 @@ div#page{
   .navigation{
     margin: 0;
     background-color: #b3b3b3;
-    .desctop-mob({
+    .mobile({
       display: none;
     });
     .region.region-navigation{
@@ -200,6 +200,9 @@ div#page{
                 .slick-list.draggable{
                   .slick-track{
                     .slick-slide{
+                        .contextual{
+                          right: 30px;
+                        }
                       .slick__slide.slide{
                         .field.field--name-field-image.field--type-image{
                           img{
@@ -527,14 +530,15 @@ div#drupal-modal{
   margin: 0;
   display: none;
 }
-.desctop-mob({
+.ajax-progress-throbber {
+  display: none;
+}
+.mobile({
   body{
     padding-top: 0 !important;
     padding: 0 !important;
   }
-  .mm-page {
-    padding-top: 64px !important;
-  }
+
   .slick img, .slick iframe {
     min-height: 500px !important;
     object-fit: cover;
@@ -542,7 +546,7 @@ div#drupal-modal{
 });
 nav#mobile-nav{
   display: none;
-  .desctop-mob({
+  .mobile({
     display: block;
     div#block-vesta-theme-osnovnayanavigaciya,
     div.mm-panel{
