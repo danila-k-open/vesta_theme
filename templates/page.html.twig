@@ -5,13 +5,22 @@
 {% endif %}
 <div id="page" class="page {{ page_front_class }}">
     <header id="header" class="header">
-        {% if page.header %}
-            <div class="header-block">
-                <div class="container">
-                    {{ page.header }}
+        <div class="header-wrap">
+            {% if page.navigation %}
+                <div class="navigation">
+                    <div class="container">
+                        {{ page.navigation }}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+            {% if page.header %}
+                <div class="header-block">
+                    <div class="container">
+                        {{ page.header }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
         {% if page.header_mobile %}
             <div class="header-mobile-block">
                 <div class="container">
@@ -20,16 +29,17 @@
             </div>
         {% endif %}
     </header>
-    {% if page.navigation %}
-        <div class="navigation">
-            <div class="container">
-                {{ page.navigation }}
-            </div>
-        </div>
-    {% endif %}
     {% if page.slider %}
         <div id="slider-block" class="slider-block">
             {{ page.slider }}
+        </div>
+    {% endif %}
+
+    {% if page.about %}
+        <div id="about-block" class="about-block">
+            <div class="container">
+                {{ page.about }}
+            </div>
         </div>
     {% endif %}
 
@@ -39,19 +49,11 @@
             {{ page.content }}
         </div>
     </main>
-
+    
     {% if page.services %}
         <div id="services-block" class="services-block">
             <div class="container">
                 {{ page.services }}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if page.about %}
-        <div id="about-block" class="about-block">
-            <div class="container">
-                {{ page.about }}
             </div>
         </div>
     {% endif %}
@@ -89,17 +91,42 @@
     {% if page.footer %}
         <footer id="footer" class="footer">
             <div class="container">
-                {{ page.footer }}
-            </div>
-            {% if page.copyrights %}
-                <div id="copyrights-block" class="copyrights-block">
-                    <div class="container">
-                        {{ page.copyrights }}
+                <div class="footer-wrap">
+                    {{ page.footer }}
+                    {% if page.copyrights %}
+                        <div id="copyrights-block" class="copyrights-block">    
+                            {{ page.copyrights }} 
+                        </div>
+                    {% endif %}
+                    <div class="vesta_backlink">
+                        <p class="vesta">
+                            <a href="https://webvesta.ru" target="_blank" title="Создание и продвижение сайтов">
+                                Создание сайтов | Веб-студия Веста
+                            </a>
+                        </p>
                     </div>
                 </div>
+                {% if page.footer_menu %}
+                    <div id="footer-menu-block" class="footer-menu-block">
+                        {{ page.footer_menu }}
+                    </div>
+                {% endif %}
+                {% if page.footer_contacts %}
+                    <div id="footer-contacts-block" class="footer-contacts-block">
+                        {{ page.footer_contacts }}
+                    </div>
+                {% endif %}
+            </div>
+            {% if page.copyrights_two %}
+                <div class="container">
+                    <div id="copyrights-block-2" class="copyrights-block-2">    
+                        {{ page.copyrights_two }} 
+                    </div>
+                </div>
+                
             {% endif %}
-            <div class="container">
-                <div class="vesta_backlink">
+            <div class="vesta_backlink_2">
+                <div class="container">
                     <p class="vesta">
                         <a href="https://webvesta.ru" target="_blank" title="Создание и продвижение сайтов">
                             Создание сайтов | Веб-студия Веста
@@ -108,6 +135,7 @@
                 </div>
             </div>
         </footer>
+
     {% endif %}
 </div>
 
