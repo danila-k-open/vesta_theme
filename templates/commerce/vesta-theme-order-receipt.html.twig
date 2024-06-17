@@ -1,0 +1,157 @@
+{#
+/**
+ * @file
+ * Template for the order receipt.
+ *
+ * Available variables:
+ * - order_entity: The order entity.
+ * - billing_information: The billing information.
+ * - shipping_information: The shipping information.
+ * - payment_method: The payment method.
+ * - totals: An array of order totals values with the following keys:
+ *   - subtotal: The order subtotal price.
+ *   - adjustments: An array of adjustment totals:
+ *     - type: The adjustment type.
+ *     - label: The adjustment label.
+ *     - total: The adjustment total price.
+ *     - weight: The adjustment weight, taken from the adjustment type.
+ *   - total: The order total price.
+ *
+ * @ingroup themeable
+ */
+#}
+{#  лого в jpg или svg лучше вставлять как base64!!!!!!!  #}
+<table style="margin: 15px auto 0 auto; max-width: 768px; font-family: arial,sans-serif;">
+  <tbody>
+  <tr>
+    <td>
+      <table style="margin-left: auto; margin-right: auto; max-width: 768px; text-align: center;">
+        <tbody>
+        <tr>
+          <td>
+            <a href="{{ url('<front>') }}" style="color: #0e69be; text-decoration: none; font-weight: bold; margin-top: 15px;">{{ url('<front>') }}</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table style="text-align: center; min-width: 450px; margin: 5px auto 0 auto; border: 1px solid #cccccc; border-radius: 5px; padding: 40px 30px 30px 30px;">
+        <tbody>
+        <tr>
+          <td style="font-size: 30px; font-weight: bold; padding-bottom: 30px;">Ваш заказ успешно создан!</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; padding-top:15px; padding-bottom: 15px; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;">
+            Детали заказа {{ '#@number :'|t({'@number': order_entity.getOrderNumber}) }}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 15px; border-bottom: 1px solid #cccccc;">
+            {% block order_items %}
+            <table style="padding-top: 15px; padding-bottom:15px; width: 100%;">
+              <tbody style="text-align: left;padding-bottom:10px;">
+                <tr>
+                  <td style="font-weight: bold;">Количество</td>
+                  <td>
+                    <span style="font-weight: bold;">Наименование</span>
+                    <span style="float: right; font-weight: bold;">Цена</span>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody style="text-align: left;">
+              {% for order_item in order_entity.getItems %}
+              <tr>
+                <td>
+                  {{ order_item.getQuantity|number_format }} x
+                </td>
+                <td>
+                  <span>{{ order_item.label }}</span>
+                  <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            {% endblock %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {% if (billing_information or shipping_information) %}
+            <table style="width: 100%; padding-top:15px; padding-bottom: 15px; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;">
+              <tbody>
+              <tr>
+                {% if shipping_information %}
+                  <td style="padding-top: 5px; font-weight: bold;">Информация о доставке</td>
+                {% endif %}
+                {% if billing_information %}
+                  <td style="padding-top: 5px; font-weight: bold;">Информация об оплате</td>
+                {% endif %}
+              </tr>
+              <tr style="vertical-align: top;">
+                {% if shipping_information %}
+                  <td>
+                    {% block shipping_information %}
+                      {{ shipping_information }}
+                    {% endblock %}
+                  </td>
+                {% endif %}
+                {% if billing_information %}
+                  <td>
+                    {% block billing_information %}
+                      {{ billing_information }}
+                    {% endblock %}
+                  </td>
+                {% endif %}
+              </tr>
+              {% if payment_method %}
+                <tr>
+                  <td style="font-weight: bold; margin-top: 10px;">Способ оплаты</td>
+                </tr>
+                <tr>
+                  <td>
+                    {% block payment_method %}
+                      {{ payment_method }}
+                    {% endblock %}
+                  </td>
+                </tr>
+              {% endif %}
+              </tbody>
+            </table>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p style="margin-bottom: 0;">
+              Промежуточный итог: {{'@subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
+            </p>
+          </td>
+        </tr>
+        {% for adjustment in totals.adjustments %}
+        <tr>
+          <td>
+            <p style="margin-bottom: 0;">
+              {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
+            </p>
+          </td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td>
+            <p style="font-size: 24px; padding-top: 15px; padding-bottom: 5px;">
+              Итоговая стоимость: {{order_entity.getTotalPrice|commerce_price_format}}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Если у Вас возникнут вопросы Вы можете связаться с нами!</p>
+            <p>Благодарим за Ваш выбор!</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
