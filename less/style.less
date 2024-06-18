@@ -1,3 +1,90 @@
+button.slick-arrow{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  &::before{
+    content: '';
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: 0;
+  }
+}
+button.slick-prev.slick-arrow{
+  &::before{
+    background-image: url("/sites/all/themes/vesta_theme/image/scroll-to-top.svg");
+    transform: rotate(-90deg);
+  }
+}
+button.slick-next.slick-arrow{
+  &::before{
+    background-image: url("/sites/all/themes/vesta_theme/image/scroll-to-top.svg");
+    transform: rotate(90deg);
+  }
+}
+.product-teaser{
+  display: flex;
+  gap: 50px;
+  .product-teaser-image{
+    max-width: 500px;
+    .field.field--name-field-variation-image.field--type-image{
+      .elements{
+        .current-slide.slick-initialized.slick-slider{
+          margin: 0 0 10px;
+          .slick-list.draggable{
+            .slick-track{
+              .element.slick-slide{
+                img{
+                  max-width: 500px;
+                  min-width: 500px;
+                  max-height: 500px;
+                  min-height: 500px;
+                  object-fit: cover;
+                }
+              }
+            }
+          }
+        }
+        .nav-slide.slick-initialized.slick-slider{
+          .slick-list.draggable{
+            margin: 0 -5px;
+            .slick-track{
+              .element.slick-slide{
+                margin: 0 5px;
+                max-width: 118px;
+                min-width: 118px;
+                max-height: 118px;
+                min-height: 118px;
+                img{
+                  max-width: 118px;
+                  max-height: 118px;
+                  max-width: 118px;
+                  min-width: 118px;
+                  max-height: 118px;
+                  min-height: 118px;
+                  object-fit: cover;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .product-teaser-info{
+    max-width: 500px;
+  }
+}
+
+
+
 div#page{
   background: #fff;
   header#header{
@@ -68,7 +155,7 @@ div#page{
             }
             &::before {
               content: '';
-              background-image: url("/themes/contrib/vesta_theme/image/search.svg");
+              background-image: url("/sites/all/themes/vesta_theme/image/search.svg");
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -192,74 +279,68 @@ div#page{
   }
   div#slider-block{
     .region.region-slider{
-      div#block-vesta-theme-views-block-slider-block-1{
-        .view.view-slider.view-id-slider{
+      div#block-vesta-theme-views-block-slayder-block-1{
+        .view.view-slayder.view-id-slayder{
           .view-content{
-            .slick.slick--view.slick--view--slider.slick--initialized{
-              .slick__slider.slick-initialized.slick-slider{
-                .slick-list.draggable{
-                  .slick-track{
-                    .slick-slide{
-                        .contextual{
-                          right: 30px;
-                        }
-                      .slick__slide.slide{
-                        .field.field--name-field-image.field--type-image{
-                          img{
+            .slick-list.draggable{
+              .slick-track{
+                .slick-slide{
+                  .contextual{
+                    right: 30px;
+                  }
+                  .node.node--type-slide.node--view-mode-default.ds-1col{
+                    .field.field--name-field-image.field--type-image{
+                      img{
 
-                          }
+                      }
+                    }
+                    .content{
+                      position: absolute;
+                      top: 0;
+                      bottom: calc(1vw + 12px);
+                      left: 0;
+                      right: 0;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      color: #fff;
+                      .field.field--name-field-slide-title{
+                        p{
+                          font-size: 2rem;
+                          font-weight: bold;
+                          margin-bottom: 0.5rem;
                         }
-                        .content{
-                          position: absolute;
-                          top: 0;
-                          bottom: calc(1vw + 12px);
-                          left: 0;
-                          right: 0;
-                          display: flex;
-                          flex-direction: column;
-                          justify-content: center;
+                      }
+                      .field.field.field--name-body{
+                        p{
+                          margin: 0.5rem;
+                        }
+                      }
+                      .field.field--name-field-slide-link{
+                        margin-top: 0.75rem;
+                        a{
+                          display: inline-block;
+                          font-weight: 400;
                           color: #fff;
-                          .field.field--name-field-slide-title{
-                            p{
-                              font-size: 2rem;
-                              font-weight: bold;
-                              margin-bottom: 0.5rem;
-                            }
-                          }
-                          .field.field.field--name-body{
-                            p{
-                              margin: 0.5rem;
-                            }
-                          }
-                          .field.field--name-field-slide-link{
-                            margin-top: 0.75rem;
-                            a{
-                              display: inline-block;
-                              font-weight: 400;
-                              color: #fff;
-                              text-align: center;
-                              vertical-align: middle;
-                              background-color: #0a75a0;
-                              border: 1px solid #0a75a0;
-                              padding: 0.375rem 0.75rem;line-height: 1.5;
-                              border-radius: 0.25rem;
+                          text-align: center;
+                          vertical-align: middle;
+                          background-color: #0a75a0;
+                          border: 1px solid #0a75a0;
+                          padding: 0.375rem 0.75rem;line-height: 1.5;
+                          border-radius: 0.25rem;
 
-                            }
-                          }
                         }
                       }
                     }
                   }
                 }
               }
-              nav.slick__arrow{
-                button.slick-prev.slick-arrow{
-
-                }
-                button.slick-next.slick-arrow{
-
-                }
-              }
+            }
+            button.slick-prev.slick-arrow{
+              left: 25px;
+            }
+            button.slick-next.slick-arrow{
+              right: 25px;
             }
           }
         }
