@@ -4,29 +4,19 @@
    x ds-1col--commerce-product-full.html.twig
    * ds-1col--commerce-product.html.twig
 -->
-{#<pre>{{ dump(content) }}</pre>#}
 <article class="product-view-full">
-    <h1 class="product-title">{{ content.title }}</h1>
-    <div class="product-preview">
-        <div class="product-image-preview">{{ content.variation_field_variation_image }}</div>
-        <div class="product-cart-preview">
-            <div class="variation-title">
-                {{ content.variation_title }}
-            </div>
-            <div class="variation-price">
-                {{ content.variation_price }}
-            </div>
-            <div class="variation-article">
-                <label class="product-article-title"><strong>Артикул: </strong></label>{{ content.variation_sku }}
-            </div>
-            <div class="variation-desc">
-                {{ content.variation_field_description }}
-            </div>
-            <div class="variation-cart">
-                {{ content.variations }}
-            </div>
+    <div class="product-teaser">
+        <div class="product-teaser-image">
+            {{ variation_field_variation_image }}
+        </div>
+        <div class="product-teaser-info">
+            {{ title }}
+            {{ variation_sku }}
+            {{ variation_field_product_availability }}
+            {{ variation_price }}
+            {{ variation_attributes }}
+            {{ variations }}
         </div>
     </div>
-    <div class="product-info"><span class="product-desc-title"><strong>Описание товара</strong></span>{{ content.body }}</div>
+    {{ body }}
 </article>
-
