@@ -82,6 +82,32 @@ button.slick-next.slick-arrow{
     max-width: 500px;
   }
 }
+ul.slick-dots{
+  li{
+    max-width: 10px;
+    min-width: 10px;
+    max-height: 10px;
+    min-height: 10px;
+    overflow: hidden;
+    button {
+      max-width: 10px;
+      min-width: 10px;
+      max-height: 10px;
+      min-height: 10px;
+      overflow: hidden;
+      background: #686868;
+      border-radius: 50%;
+      &::before{
+        display: none;
+      }
+    }
+    &.slick-active{
+      button {
+        background: #272727;
+      }
+    }
+  }
+}
 
 
 
