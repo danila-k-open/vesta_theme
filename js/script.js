@@ -91,7 +91,7 @@
             slide_product_full.find('.current-slide').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                arrows: false,
+                arrows: true,
                 swipe: false,
                 fade: true,
                 asNavFor: '.nav-slide'
@@ -100,9 +100,9 @@
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 asNavFor: '.current-slide',
-                dots: false,
-                infinite: false,
-                arrows: false,
+                dots: true,
+                infinite: true,
+                arrows: true,
                 focusOnSelect: true
             });
         }
