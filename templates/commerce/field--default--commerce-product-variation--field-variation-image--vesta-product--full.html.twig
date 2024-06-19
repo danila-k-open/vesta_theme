@@ -68,14 +68,16 @@
             <div class="nav-slide">
                 {% for item in items %}
                     {% set countText = countText + 1 %}
-                    <div{{ item.attributes.addClass('element') }}>{{ item.content }}</div>
+                    <div{{ item.attributes.addClass('element') }}>
+                        <img src="{{ file_url(item.content['#item'].entity.fileuri) }}" alt="{{ item.content['#item'].alt }}">
+                    </div>
                 {% endfor %}
             </div>
             {% endif %}
         </div>
     {% else %}
         {% for item in items %}
-            <div class="current-slide">
+            <div class="product-view-slide">
                 <div{{ attributes.addClass(classes, 'element') }}>{{ item.content }}</div>
             </div>
         {% endfor %}
