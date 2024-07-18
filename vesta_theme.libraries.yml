@@ -4,6 +4,7 @@ global-styling:
     base:
       css/jquery.mmenu.all.css: {}
       css/style.css: {}
+      css/map.css: {}
     theme:
       css/slick/slick.css: {}
       css/slick/slick-theme.css: {}
@@ -14,3 +15,4 @@ global-styling:
     js/slick.min.js: {}
     js/jquery.mmenu.all.min.js: {}
     js/script.js: {}
+    js/map.js: {}
