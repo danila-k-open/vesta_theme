@@ -41,6 +41,64 @@
 		}
 	};
 
+	// Drupal.behaviors.searchInit = {
+	// 	attach: function (context, settings) {
+	// 		once('search-init', '.search-api-page-block-form.search-form.search-block-form', context).forEach(function (element) {
+	//
+	// 			// ======================
+	// 			// MOBILE MENU WITH MMENU
+	// 			// ======================
+	//
+	// 			const initSearch = () => {
+	// 				var search = $(element);
+	// 				search.find('.search-container form .open').click(function(){
+	// 					$(this).toggleClass('btdis');
+	// 					$(this).toggleClass('btenable');
+	//
+	// 					search.find('.search-container form .close').toggleClass('btdis');
+	// 					search.find('.search-container form .close').toggleClass('btenable');
+	//
+	// 					search.find('.search-container form').toggleClass("enable");
+	// 				});
+	// 				search.find('.search-container form .close').click(function(){
+	// 					$(this).toggleClass('btdis');
+	// 					$(this).toggleClass('btenable');
+	//
+	// 					search.find('.search-container form .open').toggleClass('btdis');
+	// 					search.find('.search-container form .open').toggleClass('btenable');
+	//
+	// 					search.find('.search-container form').toggleClass("enable");
+	// 				});
+	// 			};
+	//
+	// 			initSearch();
+	//
+	// 		});
+	//
+	// 	}
+	// };
+
+	// Drupal.behaviors.accordeonInit = {
+
+	// 	// ======================
+	// 	// Accordeon
+	// 	// ======================
+
+	// 	attach: function (context, settings) {
+	// 		once('faq-accordion', '.view-faq .views-row .field.field--name-field-question-answer .field__item', context).forEach(function (item) {
+	// 			const question = $(item).find('.field.field--name-node-title');
+	// 			const answer = $(item).find('.group-answer');
+	// 			if (question && answer) {
+	// 				question.on('click', function (e) {
+	// 					e.preventDefault();
+	// 					$(this).toggleClass('active');
+	// 					answer.toggleClass('show');
+	// 				});
+	// 			}
+	// 		});
+	// 	}
+	// };
+	
 	Drupal.behaviors.scrollInit = {
 		attach: function (context, settings) {
 
