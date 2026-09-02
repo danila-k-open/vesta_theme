@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+
+{{ attach_library('vesta_client_cart/product_modal') }}
+
+{% set advanced_options = {
+    'width': 726,
+    'dialogClass': 'vesta-product-modal-dialog',
+    'title': ''
+} %}
+
+{% set entity_id = content['#commerce_product'].id() %}
+
+<a
+        href="/product/{{ entity_id }}/modal"
+        class="use-ajax vesta-product-modal-link"
+        data-dialog-type="modal"
+        data-dialog-options="{{ advanced_options|json_encode|e('html_attr') }}"
+>
+    {{ ds_content.field_article|render|striptags|trim }}
+</a>

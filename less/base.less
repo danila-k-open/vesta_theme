@@ -1,0 +1,206 @@
+// ========================================
+// BASE.less
+// ========================================
+
+@white: #fff;
+@black: #000;
+@border-color: #000032;
+@main-color: #303030;
+@link-color: #007bff;
+@padding: 15px;
+@extra_fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// ========================================
+// Сброс стилей
+// ========================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: @fonts[inter];
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: @transition-fast;
+}
+
+h1, h2 {
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+// ========================================
+// Контейнер с улучшенными отступами
+// ========================================
+.container {
+  padding-left: @padding;
+  padding-right: @padding;
+
+  .desctop-mob-md({
+    max-width: @sizes[mobile-middle] !important;
+  });
+  .desctop-tab({
+    max-width: @sizes[tablet-min] !important;
+  });
+  .desctop-lap({
+    max-width: @sizes[laptop-min] !important;
+  });
+  .desctop-pc({
+    max-width: @sizes[desktop-min] !important;
+  });
+}
+
+
+// ========================================
+// Скрытие системных элементов Drupal
+// ========================================
+.clearfix::after,
+.ajax-progress-throbber,
+.ajax-progress-throbber .throbber,
+ul.sf-menu:after{
+  padding: 0 !important;
+  margin: 0 !important;
+  display: none !important;
+}
+// ========================================
+// Улучшенные списки
+// ========================================
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// ========================================
+// Ссылки с плавным переходом
+// ========================================
+a {
+  transition: all 0.15s ease;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// ========================================
+// Общие стили для меню
+// ========================================
+.block-superfish {
+  width: auto;
+  z-index: 1;
+  ul.menu.sf-menu {
+    z-index: 1;
+    li {
+      background: transparent;
+      z-index: 1;
+      &:hover {
+        background: transparent;
+        a {
+          background: transparent;
+        }
+      }
+      a {
+        background: transparent;
+      }
+    }
+  }
+}
+
+// ========================================
+// Визуально скрытые элементы
+// ========================================
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ========================================
+// Фокусные стили
+// ========================================
+*:focus {
+  outline: none;
+}
+button:focus,
+a:focus,
+input:focus {
+  box-shadow: none;
+}
+
+
+
+// ========================================
+// Скрытие админки в мобильной версии (опционально)
+// ========================================
+.desctop-mob({
+  .toolbar-tray-open.toolbar-vertical.toolbar-fixed {
+    margin-inline-start: 0 !important;
+  }
+  #toolbar-administration {
+    display: none !important;
+  }
+  body {
+    padding: 0 !important;
+  }
+});
+
+
+// ========================================
+// ГЛОБАЛЬНЫЕ УЛУЧШЕНИЯ ПРОИЗВОДИТЕЛЬНОСТИ
+// ========================================
+a,
+button,
+.card,
+.block,
+.node {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+* {
+  &::before,
+  &::after {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+}
+.transition-smooth {
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+  opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+  box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}

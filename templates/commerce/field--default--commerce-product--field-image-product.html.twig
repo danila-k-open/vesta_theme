@@ -1,0 +1,39 @@
+{%
+    set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    label_display == 'inline' ? 'clearfix',
+]
+%}
+{%
+    set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+
+{% set swiper_wrapper = '' %}
+{% set swiper_slide = '' %}
+{% if items|length > 1 %}
+    {% set swiper_wrapper = 'swiper-wrapper' %}
+    {% set swiper_slide = 'swiper-slide' %}
+{% endif %}
+
+
+<div{{ attributes.addClass(classes) }}>
+    <div class="field__items {{ swiper_wrapper }}">
+        {% for item in items %}
+            <div{{ item.attributes.addClass('field__item', swiper_slide) }}>{{ item.content }}</div>
+        {% endfor %}
+    </div>
+
+    {% if items|length > 1 %}
+        <div class="swiper-buttons">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    {% endif %}
+</div>

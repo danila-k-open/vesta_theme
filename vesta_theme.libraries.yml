@@ -1,18 +1,24 @@
-global-styling:
+global_library:
   version: VERSION
   css:
-    base:
-      css/jquery.mmenu.all.css: {}
-      css/style.css: {}
-      css/map.css: {}
     theme:
       css/slick/slick.css: {}
       css/slick/slick-theme.css: {}
+      css/swiper/swiper.min.css: {}
+      css/jquery/jquery.mmenu.all.css: {}
+      css/map.css: {}
   less:
     theme:
-      less/base.less: {}
+      less/style.less: {}
   js:
-    js/slick.min.js: {}
-    js/jquery.mmenu.all.min.js: {}
+    js/jquery/jquery.mmenu.all.min.js: {}
+    js/slick/slick.min.js: {}
+    js/swiper/swiper.min.js: {}
     js/script.js: {}
     js/map.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once

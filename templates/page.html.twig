@@ -1,0 +1,98 @@
+{% if page_is_front == true %}
+    {% set page_front_class = "front" %}
+{% else %}
+    {% set page_front_class = "not-front" %}
+{% endif %}
+
+{%
+    set classes = [
+    'page',
+    page_front_class,
+] | merge(page_class)
+%}
+
+<div id="page" {{ attributes.addClass(classes) }}>
+
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-desctop">
+                <div class="content-header">
+                    {% if page.header %}
+                        <div class="header">
+                            {{ page.header }}
+                        </div>
+                    {% endif %}
+                    {% if page.navigation %}
+                        <div class="navigation">
+                            {{ page.navigation }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="post-header-block">
+                    {{ page.post_header }}
+                </div>
+            </div>
+        </div>
+        <div class="header-mobile">
+            <div class="container">
+                {{ page.header_mobile }}
+            </div>
+        </div>
+    </header>
+
+    {% if page.banner %}
+        <div id="banner-block" class="banner-block">
+            <div class="container">
+                {{ page.banner }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.for_buyer %}
+        <div id="for-buyer-block" class="for-buyer-block">
+            <div class="container">
+                {{ page.for_buyer }}
+            </div>
+        </div>
+    {% endif %}
+
+    <main class="main">
+        <a id="main-content" tabindex="-1"></a>
+        <div class="container">
+            {{ page.content }}
+        </div>
+    </main>
+
+    {% if page.catalog %}
+        <div id="catalog-block" class="catalog-block">
+            <div class="container">
+                {{ page.catalog }}
+            </div>
+        </div>
+    {% endif %}
+
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="pre-footer-block">
+                    {{ page.pre_footer }}
+                </div>
+                <div class="content-footer">
+                    <div class="footer-block">
+                        {{ page.footer }}
+                    </div>
+                    <div class="copyright-block">
+                        {{ page.copyright }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+{% if page.navigation_mobile %}
+    <nav id="mobile-nav">
+        {{ page.navigation_mobile }}
+    </nav>
+{% endif %}

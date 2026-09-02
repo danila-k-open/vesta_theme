@@ -1,0 +1,122 @@
+{#
+/**
+ * @file
+ * Таблица состава агрегата, узла или комплекта запчастей.
+ *
+ * Переменные:
+ * - rows: подготовленные строки состава из CompositionBuilder.
+ * - parent: текущий товар-родитель.
+ */
+#}
+{{ attach_library('vesta_client_cart/cart_app') }}
+{{ attach_library('vesta_client_cart/product_modal') }}
+{% set advanced_options = {
+    'width': 726,
+    'dialogClass': 'vesta-product-modal-dialog',
+    'title': ''
+} %}
+{% set modal_attributes = 'class="use-ajax vesta-product-modal-link" data-dialog-type="modal" data-dialog-options="' ~ advanced_options|json_encode|e('html_attr') ~ '"' %}
+<div class="vesta-catalog-list">
+    <div class="table-wrapper">
+        <table class="vesta-catalog-table" data-vesta-catalog-table>
+            <thead>
+            <tr>
+                <th class="thead-position">Поз.</th>
+                <th class="thead-article">Артикул</th>
+                <th class="thead-name">Наименование</th>
+                <th class="thead-note" colspan="2">Примечание</th>
+                <th class="thead-count">Кол-во</th>
+                <th class="thead-order-count">В заказе</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr
+                        id="{{ row.anchor ?: 'vesta-row-' ~ row.entity_id }}"
+                        data-vesta-row
+                        data-entity-id="{{ row.entity_id }}"
+                        data-vesta-anchor="{{ row.anchor }}"
+                        data-vesta-position="{{ row.position }}"
+                        data-type="{{ row.type }}"
+                        data-article="{{ row.article }}"
+                        data-old-article="{{ row.old_article }}"
+                        data-title="{{ row.title }}"
+                        data-quantity="{{ row.quantity }}"
+                        data-order-key="{{ row.order_key }}"
+                >
+                    <td class="tbody-position">{{ row.position }}</td>
+                    <td class="tbody-article">
+                        {% if row.url %}
+                            <a href="{{ row.url }}" {{ modal_attributes|raw }}>{{ row.article ?: row.title }}</a>
+                        {% else %}
+                            {{ row.article ?: row.title }}
+                        {% endif %}
+                    </td>
+                    <td class="tbody-name">{{ row.title }}</td>
+                    <td class="tbody-note vesta-note-cell vesta-note-cell--replacements"{% if not row.group %} colspan="2"{% endif %}>
+                        {% if row.replacements %}
+                            <table class="vesta-note-table">
+                                <tbody>
+                                {% for replacement in row.replacements %}
+                                    <tr>
+                                        <td>
+                                            {% set replacement_note = replacement.note ?: 'Заменяет арт.' %}
+                                            <span class="vesta-note-text">{{ replacement_note }}</span>
+                                            {% if replacement.url %}
+                                                <a href="{{ replacement.url }}" {{ modal_attributes|raw }}>{{ replacement.label }}</a>
+                                            {% else %}
+                                                {{ replacement.label }}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </td>
+                    {% if row.group %}
+                        {% if not row.group_skip|default(false) %}
+                            <td class="tbody-note-optional vesta-note-cell vesta-note-cell--group"{% if row.group_rowspan|default(1) > 1 %} rowspan="{{ row.group_rowspan }}"{% endif %}>
+                                {% if row.group %}
+                                    <span class="vesta-note-group-title">{{ row.group.title }}</span>
+                                    {% if row.group.article %}
+                                        <span class="vesta-note-group-article-prefix">арт.</span>
+                                        {% if row.group.url %}
+                                            <a href="{{ row.group.url }}" {{ modal_attributes|raw }}>{{ row.group.article }}</a>
+                                        {% else %}
+                                            {{ row.group.article }}
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if row.group.replacements %}
+                                        <span class="vesta-note-group-replacements">(
+                      {%- for replacement in row.group.replacements -%}
+                          {%- set group_replacement_note = replacement.note ?: 'Заменяет арт.' -%}
+                          <span class="vesta-note-text">{{ group_replacement_note }}</span>
+                        {%- if replacement.url -%}
+                          <a href="{{ replacement.url }}" {{ modal_attributes|raw }}>{{ replacement.label }}</a>
+                      {%- else -%}
+                          {{ replacement.label }}
+                      {%- endif -%}
+                          {%- if not loop.last %}, {% endif -%}
+                      {%- endfor -%}
+                    )</span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                    <td class="tbody-count">{{ row.quantity }}</td>
+                    <td class="tbody-order-count vesta-order-cell">
+                        <div
+                                class="add-to-cart-form-wrapper"
+                                data-entity-id="{{ row.entity_id }}"
+                        ></div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="7">Состав не заполнен.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,22 +1,20 @@
 name: vesta_theme
 type: theme
-base theme: bootstrap4
+'base theme': bootstrap4
 description: 'Тема Vesta'
 core_version_requirement: ^8 || ^9 || ^10
 libraries:
-  - vesta_theme/global-styling
-  - vesta_theme/global-scripts
+  - vesta_theme/global_library
 regions:
   header: 'Шапка'
   header_mobile: 'Мобильная шапка'
   navigation: 'Навигация'
   navigation_mobile: 'Мобильная навигация'
-  slider: 'Слайдер'
+  post_header: 'Лого в шапке'
+  banner: 'Баннер'
+  for_buyer: 'Для покупателей'
   content: 'Контент'
-  services: 'Услуги'
-  about: 'О компании'
-  works: 'Наши работы'
-  form: 'Связаться с нами'
-  map: 'Карта'
+  catalog: 'Каталог'
+  pre_footer: 'Лого в подвале'
   footer: 'Подвал'
-  copyrights: 'Копирайт'
+  copyright: 'Копирайт'

@@ -15,14 +15,16 @@ function vesta_theme_preprocess_region(&$variables)
 }
 
 
-function vesta_theme_form_search_api_page_block_form_search_alter(&$form, &$form_state)
+function vesta_theme_form_search_api_page_block_form_catalog_search_alter(&$form, &$form_state)
 {
-    $form['keys']['#attributes']['placeholder'][] = t('Поиск');
+    $form['keys']['#attributes']['placeholder'][] = 'Артикул запчасти';
+    $form['actions']['submit']['#value'] = 'Найти';
 }
 
 //хук для смены шаблона письма клиенту после оплаты заказа
 //а также страницы checkout/ORDER_ID/complete с вопросами обращаться
-function vesta_theme_theme($existing, $type, $theme, $path) {
+function vesta_theme_theme($existing, $type, $theme, $path)
+{
     return [
         'commerce_order_receipt' => [//шаблон письма
             'template' => 'commerce/vesta-theme-order-receipt',
@@ -33,4 +35,35 @@ function vesta_theme_theme($existing, $type, $theme, $path) {
             'base hook' => 'commerce_checkout_completion_message',
         ],
     ];
+}
+
+
+/**
+ * Implements hook_preprocess_page().
+ * Добавить переменные (Имя сайта) в twig
+ */
+function vesta_theme_preprocess_page(&$variables)
+{
+    $variables['logo'] = theme_get_setting('logo', 'vesta_theme')['url'];
+    $config = \Drupal::config('system.site');
+    $variables['site_name'] = $config->get('name');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu-local-task templates.
+ */
+function vesta_theme_preprocess_menu_local_task(&$variables)
+{
+    // Ensure is-active class is set when the tab is active. The generic active
+    // link handler applies stricter comparison rules than what is necessary for
+    // tabs.
+    if (isset($variables['is_active']) && $variables['is_active'] === TRUE) {
+        $variables['link']['#options']['attributes']['class'][] = 'nav-link active is-active';
+    } else {
+        $variables['link']['#options']['attributes']['class'][] = 'nav-link';
+    }
+
+    if (isset($variables['element']['#level'])) {
+        $variables['level'] = $variables['element']['#level'];
+    }
 }

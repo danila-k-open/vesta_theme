@@ -1,0 +1,32 @@
+<div class="search-page">
+  {{ form }}
+  <div class="search-result-wrapper">
+    {% if search_title %}
+      <h2 class="result-title">{{ search_title }}</h2>
+    {% endif %}
+
+    {% if no_of_results %}
+      <div class="search-no-of-results">
+        <p>{{ no_of_results }}</p>
+      </div>
+    {% endif %}
+
+    {% if no_results_found %}
+      <div class="search-no-results-found">
+        {{ no_results_found }}
+      </div>
+    {% endif %}
+
+    {% if results %}
+      <div class="search-results">
+        {{ results }}
+      </div>
+    {% endif %}
+
+    {% if pager %}
+      {{ pager }}
+    {% endif %}
+  </div>
+</div>
+
+

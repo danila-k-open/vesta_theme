@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Таблица товаров каталога, где используется текущий товар.
+ *
+ * Переменные:
+ * - items: массив связей из CompositionBuilder::buildUses().
+ * - label: подпись блока.
+ * - parent: текущий товар.
+ * - bundle: тип товара.
+ * - view_mode: режим отображения.
+ * - template_variant: вручную заданный суффикс шаблона.
+ */
+#}
+{{ attach_library('vesta_client_cart/product_modal') }}
+{% set advanced_options = {
+    'width': 726,
+    'dialogClass': 'vesta-product-modal-dialog',
+    'title': ''
+} %}
+{% set modal_attributes = 'class="use-ajax vesta-product-modal-link" data-dialog-type="modal" data-dialog-options="' ~ advanced_options|json_encode|e('html_attr') ~ '"' %}
+
+{% if items %}
+    <div class="vesta-uses-list">
+        <label class="vesta-field-label">Используется в:</label>
+        <div class="table-wrapper">
+            <table class="vesta-uses-table">
+                <thead>
+                <tr>
+                    <th>Артикул</th>
+                    <th>Наименование</th>
+                    <th>Кол-во</th>
+                    <th>Позиция на схеме</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>
+                            {% if item.modal_url %}
+                                <a href="{{ item.modal_url }}" {{ modal_attributes|raw }}>{{ item.article ?: item.title }}</a>
+                            {% else %}
+                                {{ item.article ?: item.title }}
+                            {% endif %}
+                        </td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>
+                            {% if item.position_url %}
+                                <a href="{{ item.position_url }}">{{ item.position_label }}</a>
+                            {% else %}
+                                {{ item.position_label }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endif %}
