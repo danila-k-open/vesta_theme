@@ -15,23 +15,16 @@
 
     <header id="header" class="header">
         <div class="container">
-            <div class="header-desctop">
-                <div class="content-header">
-                    {% if page.header %}
-                        <div class="header">
-                            {{ page.header }}
-                        </div>
-                    {% endif %}
-                    {% if page.navigation %}
-                        <div class="navigation">
-                            {{ page.navigation }}
-                        </div>
-                    {% endif %}
+            {% if page.header %}
+                <div class="header">
+                    {{ page.header }}
                 </div>
-                <div class="post-header-block">
-                    {{ page.post_header }}
+            {% endif %}
+            {% if page.navigation %}
+                <div class="navigation">
+                    {{ page.navigation }}
                 </div>
-            </div>
+            {% endif %}
         </div>
         <div class="header-mobile">
             <div class="container">
@@ -44,14 +37,6 @@
         <div id="banner-block" class="banner-block">
             <div class="container">
                 {{ page.banner }}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if page.for_buyer %}
-        <div id="for-buyer-block" class="for-buyer-block">
-            <div class="container">
-                {{ page.for_buyer }}
             </div>
         </div>
     {% endif %}
@@ -71,21 +56,22 @@
         </div>
     {% endif %}
 
+    {% if page.form %}
+        <div id="form-block" class="form-block">
+            <div class="container">
+                {{ page.form }}
+            </div>
+        </div>
+    {% endif %}
+
 
     <footer id="footer" class="footer">
         <div class="container">
-            <div class="footer-wrapper">
-                <div class="pre-footer-block">
-                    {{ page.pre_footer }}
-                </div>
-                <div class="content-footer">
-                    <div class="footer-block">
-                        {{ page.footer }}
-                    </div>
-                    <div class="copyright-block">
-                        {{ page.copyright }}
-                    </div>
-                </div>
+            <div class="footer-block">
+                {{ page.footer }}
+            </div>
+            <div class="copyright-block">
+                {{ page.copyright }}
             </div>
         </div>
     </footer>
