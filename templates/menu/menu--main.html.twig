@@ -59,7 +59,7 @@ We call a macro which calls itself to render the full tree.
   <li{{item.attributes.addClass(list_item_classes)}}>
   {% set link_attrs = { 'class': link_classes } %}
   {% if menu_level == 0 and item.below %}
-    {% set link_attrs = link_attrs|merge({'title': ('Expand menu' | t) ~ ' ' ~ item.title, 'aria-haspopup' : 'true', 'aria-expanded' : 'false' }) %}
+    {% set link_attrs = link_attrs|merge({'title': item.title, 'aria-haspopup' : 'true', 'aria-expanded' : 'false' }) %}
   {% endif %}
   {% if item.in_active_trail %}
     {% set link_attrs = link_attrs|merge({ 'aria-current': 'page' }) %}
